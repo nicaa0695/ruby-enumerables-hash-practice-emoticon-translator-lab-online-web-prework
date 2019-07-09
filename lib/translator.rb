@@ -12,11 +12,21 @@ def load_library(file_path)
   result
 end
 
-def get_japanese_emoticon(emoticon_file, emoticon)
-  emoticon_lib = load_library(emoticon_file)
-  japanese_emoticon = emoticon_lib['get_emoticon']['emoticon']
-  japanese_emoticon ? japanese_emoticon : 'Sorry, that emoticon was not found'
+def get_japanese_emoticon(yaml_file, emoticon)
+  library = load_library(yaml_file)
+  response = nil 
+  library["get_emoticon"].each do |english, japanese|
+    if emoticon == english
+      response = japanese
+    end
+  end
+  if response == nil
+    return "Sorry, that emoticon was not found"
+  else
+    return response
+  end
 end
+
 
 def get_english_meaning(file_path = './lib/emoticonsyml'
 end
