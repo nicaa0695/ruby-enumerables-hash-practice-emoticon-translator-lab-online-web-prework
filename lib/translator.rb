@@ -38,4 +38,5 @@ def get_english_meaning(yaml_file, emoticon)
   end
   if response == nil
     
+    
 end
